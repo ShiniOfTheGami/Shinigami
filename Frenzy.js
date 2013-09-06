@@ -27,6 +27,12 @@ function AutoGolden(){
 			Game.Popup('AutoGolden disabled');
 		}
 }
+function superfrenzy(){
+	Game.frenzy=Game.fps*120;
+	Game.frenzyPower=1000000;
+	Game.recalculateGains=1;
+	Game.Popup('Those darn Cheaters');
+}
 function addFrenzyClick() {
     var FrenzyClick = document.createElement('div');
     FrenzyClick.id = 'FrenzyClick';
@@ -54,6 +60,10 @@ function addFrenzyClick() {
 	Menu.style.cssText = 'display:none';
 	Menu.innerHTML = '<button id="AutoClick" type="button" onclick="AutoClick();">AutoClick</button><button id="AutoGolden" type="button" onclick="AutoGolden();">AutoGolden</button>';
 	document.getElementById('sectionMiddle').appendChild(Menu);
+	var SuperFrenzy = document.createElement('div');
+	SuperFrenzy.id = 'Superfrenzy';
+	SuperFrenzy.onclick = function(){superfrenzy();};
+	document.getElementById('game').appendChild(SuperFrenzy);
 }
 function styling(){
 var FrenzyClickstyle = document.styleSheets[0];
@@ -65,6 +75,8 @@ FrenzyClickstyle.addRule('#MenuButton','padding:14px 16px 10px 0px;top:0px;right
 FrenzyClickstyle.addRule('#Menu','height:96px;position:absolute;width:100%;top:0px;background-color:white;z-index:2000;box-shadow:inset 0 0 5px #000;overflow-x:hidden;');
 FrenzyClickstyle.addRule('#AutoClick','height:86px;width:30%;margin-left:1%;margin-top:5px;');
 FrenzyClickstyle.addRule('#AutoGolden','height:86px;width:30%;margin-left:1%;margin-top:5px;');
+FrenzyClickstyle.addRule('#Superfrenzy','z-index:10000000000000000;position:absolute;left:0px;bottom:0px;width:74px;height:22px;margin:8px;');
+FrenzyClickstyle.addRule('#Superfrenzy:hover','cursor:text');
 }
 
 Startup = setInterval(function() {
