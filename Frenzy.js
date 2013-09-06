@@ -1,3 +1,32 @@
+var clicking = false;
+var golden = false;
+function AutoClick() {
+	clicking = !clicking;
+	if(clicking == true){
+		Autoclicker = setInterval(function(){
+			Game.ClickCookie();
+		},1);
+		Game.Popup('AutoClicker enabled');
+	}else{
+		clearInterval(Autoclicker);
+		Game.Popup('AutoClicker disabled');
+	}
+
+}
+function AutoGolden(){
+	golden = !golden; 
+	if(golden == true){
+		GoldenClicker = setInterval(function() {
+			if (Game.goldenCookie.life > 0){ 
+				Game.goldenCookie.click();
+			};
+		}, 100);
+		Game.Popup('AutoGolden enabled');
+		}else{
+			clearInterval(GoldenClicker);
+			Game.Popup('AutoGolden disabled');
+		}
+}
 function addFrenzyClick() {
     var FrenzyClick = document.createElement('div');
     FrenzyClick.id = 'FrenzyClick';
@@ -23,7 +52,7 @@ function addFrenzyClick() {
 	var Menu = document.createElement('div');
 	Menu.id = 'Menu';
 	Menu.style.cssText = 'display:none';
-	Menu.innerHTML = '<button id="AutoClick" type="button" onclick="setInterval(function() {Game.ClickCookie();}, 1);">AutoClick</button><button id="AutoGolden" type="button" onclick="setInterval(function() {if (Game.goldenCookie.life > 0) Game.goldenCookie.click();}, 100);">AutoGolden</button>';
+	Menu.innerHTML = '<button id="AutoClick" type="button" onclick="AutoClick();">AutoClick</button><button id="AutoGolden" type="button" onclick="AutoGolden();">AutoGolden</button>';
 	document.getElementById('sectionMiddle').appendChild(Menu);
 }
 function styling(){
