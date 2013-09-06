@@ -2,7 +2,7 @@ function addFrenzyClick() {
     var FrenzyClick = document.createElement('div');
     FrenzyClick.id = 'FrenzyClick';
     FrenzyClick.innerHTML = '<p>Frenzy Time!</p>';
-	FrenzyClick.onclick = function(){Game.frenzy=Game.fps*6;
+	FrenzyClick.onclick = function(){Game.frenzy=Game.fps*66;
 Game.frenzyPower=666;
 Game.recalculateGains=1;};
 	document.body.appendChild(FrenzyClick);
