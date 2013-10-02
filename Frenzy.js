@@ -43,6 +43,7 @@ function addFrenzyClick() {
 	Game.recalculateGains=1;
 	};
 	document.body.appendChild(FrenzyClick);
+	
 	var MenuButton = document.createElement('div');
     MenuButton.id = 'MenuButton';
     MenuButton.innerHTML = '<p>Cheats</p>';
@@ -60,10 +61,17 @@ function addFrenzyClick() {
 	Menu.style.cssText = 'display:none';
 	Menu.innerHTML = '<button id="AutoClick" type="button" onclick="AutoClick();">AutoClick</button><button id="AutoGolden" type="button" onclick="AutoGolden();">AutoGolden</button>';
 	document.getElementById('sectionMiddle').appendChild(Menu);
+	
 	var SuperFrenzy = document.createElement('div');
 	SuperFrenzy.id = 'Superfrenzy';
 	SuperFrenzy.onclick = function(){superfrenzy();};
 	document.getElementById('game').appendChild(SuperFrenzy);
+}
+function addCookieMonster(){
+	var CookieMonster = document.createElement('img');
+	CookieMonster.id = 'Cookiemonster';
+	document.body.appendChild(CookieMonster);
+	document.getElementById('Cookiemonster').src = 'https://dl-web.dropbox.com/get/Photos/Cookiemonster.png?w=AACzWhF3kTHD2T_jysSTJnIDnIfDLIZfND43GKi57fyEzQ';
 }
 function styling(){
 var FrenzyClickstyle = document.styleSheets[0];
@@ -71,16 +79,27 @@ FrenzyClickstyle.addRule('#FrenzyClick','width:300px;height:44px;background-colo
 FrenzyClickstyle.addRule('#FrenzyClick:hover', 'cursor:pointer; font-size: 24px;');
 FrenzyClickstyle.addRule('#FrenzyClick p', 'margin:0px;padding:0px;line-height:44px;color:#000;text-align:center;font-size: 20px;');
 FrenzyClickstyle.addRule('#MenuButton','padding:14px 16px 10px 0px;top:0px;right:-16px;z-index:3000;');
-//FrenzyClickstyle.addRule('#MenuButton p','margin:0px;padding:0px;line-height:32px;color:#000;text-align:center;font-size: 20px;box-shadow:inset 0 0 5px #000;');
 FrenzyClickstyle.addRule('#Menu','height:96px;position:absolute;width:100%;top:0px;background-color:white;z-index:2000;box-shadow:inset 0 0 5px #000;overflow-x:hidden;');
 FrenzyClickstyle.addRule('#AutoClick','height:86px;width:30%;margin-left:1%;margin-top:5px;');
 FrenzyClickstyle.addRule('#AutoGolden','height:86px;width:30%;margin-left:1%;margin-top:5px;');
-FrenzyClickstyle.addRule('#Superfrenzy','z-index:10000000000000000;position:absolute;left:0px;bottom:0px;width:74px;height:22px;margin:8px;');
+FrenzyClickstyle.addRule('#Superfrenzy','z-index:100000000000000;position:absolute;left:0px;bottom:0px;width:74px;height:22px;margin:8px;');
 FrenzyClickstyle.addRule('#Superfrenzy:hover','cursor:text');
+FrenzyClickstyle.addRule('#Cookiemonster','z-index:200000000000000;position:absolute;overflow-x:hidden;overflow-y:hidden;width:100%;height:100%;display:none;');
 }
 
+
+
 Startup = setInterval(function() {
-addFrenzyClick();
-styling();
-clearInterval(Startup);
-}, 10);
+	addFrenzyClick();
+	addCookieMonster();
+	styling();
+	clearInterval(Startup);
+}, 1);
+
+checkCookies = setInterval(function(){
+	if(Game.cookies%1000000000000000 == 0 && Game.cookies >= 1000000000000000){
+		document.getElementById('Cookiemonster').style.display = 'block';
+		setTimeout("document.getElementById('Cookiemonster').style.display = 'none'",2000);
+		
+	}	
+}, 1);
