@@ -71,7 +71,7 @@ function addCookieMonster(){
 	var CookieMonster = document.createElement('img');
 	CookieMonster.id = 'Cookiemonster';
 	document.body.appendChild(CookieMonster);
-	document.getElementById('Cookiemonster').src = 'https://dl-web.dropbox.com/get/Photos/Cookiemonster.png?w=AACzWhF3kTHD2T_jysSTJnIDnIfDLIZfND43GKi57fyEzQ';
+	document.getElementById('Cookiemonster').src = 'http://i.imgur.com/mapEKNh.png';
 }
 function styling(){
 var FrenzyClickstyle = document.styleSheets[0];
