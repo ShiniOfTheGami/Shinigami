@@ -6,10 +6,10 @@ function AutoClick() {
 		Autoclicker = setInterval(function(){
 			Game.ClickCookie();
 		},1);
-		Game.Popup('AutoClicker enabled');
+		Game.Notify('Cheat','AutoClicker enabled',[3,5],6);
 	}else{
 		clearInterval(Autoclicker);
-		Game.Popup('AutoClicker disabled');
+		Game.Notify('Cheat','AutoClicker disabled',[3,5],6);
 	}
 
 }
@@ -21,17 +21,17 @@ function AutoGolden(){
 				Game.goldenCookie.click();
 			};
 		}, 100);
-		Game.Popup('AutoGolden enabled');
+		Game.Notify('Gold!' ,'AutoGolden enabled',[3,5],6);
 		}else{
 			clearInterval(GoldenClicker);
-			Game.Popup('AutoGolden disabled');
+			Game.Notify('Lead!' ,'AutoGolden disabled',[3,5],6);
 		}
 }
 function superfrenzy(){
 	Game.frenzy=Game.fps*120;
 	Game.frenzyPower=1000000;
 	Game.recalculateGains=1;
-	Game.Popup('Those darn Cheaters');
+	Game.Notify('.....','Those darn Cheaters',[3,5],6);
 }
 function addFrenzyClick() {
     var FrenzyClick = document.createElement('div');
