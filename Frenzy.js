@@ -8,10 +8,10 @@ function AutoClick() {
 		Autoclicker = setInterval(function(){
 			Game.ClickCookie();
 		},1);
-		Game.Notify('Cheat','AutoClicker enabled','');
+		Game.Notify('Cheat','AutoClicker enabled','',6);
 	}else{
 		clearInterval(Autoclicker);
-		Game.Notify('Cheat','AutoClicker disabled','');
+		Game.Notify('Cheat','AutoClicker disabled','',6);
 	}
 
 }
@@ -25,17 +25,17 @@ function AutoGolden(){
 			if(popWrinklers == true){Game.CollectWrinklers();}
 			if(popSeasonal == true){Game.seasonPopup.click();}
 		}, 100);
-		Game.Notify('Gold!' ,'AutoGolden enabled','');
+		Game.Notify('Gold!' ,'AutoGolden enabled','',6);
 		}else{
 			clearInterval(GoldenClicker);
-			Game.Notify('Lead!' ,'AutoGolden disabled','');
+			Game.Notify('Lead!' ,'AutoGolden disabled','',6);
 		}
 }
 function superfrenzy(){
 	Game.frenzy=Game.fps*120;
 	Game.frenzyPower=1000000;
 	Game.recalculateGains=1;
-	Game.Notify('Those darn Cheaters','1000000x Frenzy activated','');
+	Game.Notify('Those darn Cheaters','1000000x Frenzy activated','',6);
 }
 function addFrenzyClick() {
     var FrenzyClick = document.createElement('div');
