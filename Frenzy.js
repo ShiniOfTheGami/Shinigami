@@ -1,5 +1,7 @@
 var clicking = false;
 var golden = false;
+var popWrinklers = false;
+var popSeasonal = false;
 function AutoClick() {
 	clicking = !clicking;
 	if(clicking == true){
@@ -20,8 +22,8 @@ function AutoGolden(){
 			if (Game.goldenCookie.life > 0){ 
 				Game.goldenCookie.click();
 			};
-			Game.CollectWrinklers();
-			Game.seasonPopup.click();
+			if(popWrinklers == true){Game.CollectWrinklers();}
+			if(popSeasonal == true){Game.seasonPopup.click();}
 		}, 100);
 		Game.Notify('Gold!' ,'AutoGolden enabled','');
 		}else{
@@ -69,7 +71,13 @@ function addFrenzyClick() {
 	document.getElementById('sectionMiddle').appendChild(Menu);
 	var subsection = document.createElement('div');
 	subsection.id = "SubSection";
-	subsection.innerHTML = '<div class="title">Automatic Clicking</div><div class="listing">'+Game.WriteButton("autoclick","AutoClick","AutoClick ON","AutoClick OFF","AutoClick();")+'</div><div class="listing">'+Game.WriteButton("autogolden","AutoGolden","AutoGolden ON","AutoGolden OFF","AutoGolden();")+'</div><div class="title">Frenzy</div>';
+	
+	subsection.innerHTML = 
+	'<div class="title">Automatic Clicking</div>'+
+	'<div class="listing">'+Game.WriteButton("autoclick","AutoClick","AutoClick ON","AutoClick OFF","AutoClick();")+'</div>'+
+	'<div class="listing">'+Game.WriteButton("autogolden","AutoGolden","AutoGolden ON","AutoGolden OFF","AutoGolden();")+'<input type="checkbox" name="goldenmode" value="Wrinklers" onclick="popWrinklers = this.checked;">Pop Wrinklers<input type="checkbox" name="goldenmode" value="Seasonal" onclick="popSeasonal = this.checked;">Pop seasonal specials</div>'+
+	'<div class="title">Frenzy</div>';
+	
 	document.getElementById('Menu').appendChild(subsection);
 	document.getElementById('SubSection').className="subsection";
 	
