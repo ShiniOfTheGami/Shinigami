@@ -98,6 +98,7 @@ FrenzyClickstyle.addRule('#Cookiemonster','z-index:200000000000000;position:abso
 Startup = setInterval(function() {
 	addFrenzyClick();
 	addCookieMonster();
+	addCookieMonsterButton()
 	styling();
 	clearInterval(Startup);
 }, 1);
