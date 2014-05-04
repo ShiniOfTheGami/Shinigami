@@ -50,24 +50,44 @@ function addFrenzyClick() {
     MenuButton.id = 'MenuButton';
     MenuButton.innerHTML = 'Cheats';
 	MenuButton.onclick = function(){
-		if(document.getElementById('Menu').style.display == 'block'){
-			document.getElementById('Menu').style.display = 'none';
-		}else{
-			document.getElementById('Menu').style.display = 'block';
-		};
-	}	
+	if(document.getElementById('Menu').style.display == 'block'){
+		document.getElementById('Menu').style.display = 'none';
+		document.getElementById('sectionMiddle').classList.remove("menus");
+		document.getElementById('rows').classList.remove("rowhidden");
+	}else{
+		document.getElementById('Menu').style.display = 'block';
+		document.getElementById('sectionMiddle').classList.add("menus");
+		document.getElementById('rows').classList.add("rowhidden");
+	};
+	}
 	document.getElementById('comments').appendChild(MenuButton);
 	document.getElementById("MenuButton").className = "button";
 	var Menu = document.createElement('div');
 	Menu.id = 'Menu';
 	Menu.style.cssText = 'display:none';
-	Menu.innerHTML = '<button id="AutoClick" type="button" onclick="AutoClick();">AutoClick</button><button id="AutoGolden" type="button" onclick="AutoGolden();">AutoGolden</button>';
+	Menu.innerHTML = '<div style="position:absolute;top:8px;left:8px;cursor:pointer;font-size:16px;" onclick="toggleMenu();">X</div><div class="section">Cheats</div>';
 	document.getElementById('sectionMiddle').appendChild(Menu);
+	var subsection = document.createElement('div');
+	subsection.id = "SubSection";
+	subsection.innerHTML = '<div class="title">Automatic Clicking</div><div class="listing">'+Game.WriteButton("autoclick","AutoClick","AutoClick ON","AutoClick OFF","AutoClick();")+'</div><div class="listing">'+Game.WriteButton("autogolden","AutoGolden","AutoGolden ON","AutoGolden OFF","AutoGolden();")+'</div><div class="title">Frenzy</div>';
+	document.getElementById('Menu').appendChild(subsection);
+	document.getElementById('SubSection').className="subsection";
 	
 	var SuperFrenzy = document.createElement('div');
 	SuperFrenzy.id = 'Superfrenzy';
 	SuperFrenzy.onclick = function(){superfrenzy();};
 	document.getElementById('game').appendChild(SuperFrenzy);
+}
+function toggleMenu(){
+	if(document.getElementById('Menu').style.display == 'block'){
+		document.getElementById('Menu').style.display = 'none';
+		document.getElementById('sectionMiddle').classList.remove("menus");
+		document.getElementById('rows').classList.remove("rowhidden");
+	}else{
+		document.getElementById('Menu').style.display = 'block';
+		document.getElementById('sectionMiddle').classList.add("menus");
+		document.getElementById('rows').classList.add("rowhidden");
+	};
 }
 function addCookieMonster(){
 	var CookieMonster = document.createElement('img');
@@ -91,15 +111,16 @@ function addCookieMonsterButton(){
 function styling(){
 var FrenzyClickstyle = document.styleSheets[0];
 FrenzyClickstyle.addRule('#FrenzyClick','width:300px;height:44px;background-color:white;z-index:1000;position:fixed;top:31px;right:18px;box-shadow:inset 0 0 5px #000;margin:0px;padding:0px;');
-FrenzyClickstyle.addRule('#FrenzyClick:hover', 'cursor:pointer; font-size: 24px;');
+FrenzyClickstyle.addRule('#FrenzyClick:hover', 'cursor:pointer; font-size: 30px;');
 FrenzyClickstyle.addRule('#FrenzyClick p', 'margin:0px;padding:0px;line-height:44px;color:#000;text-align:center;font-size: 20px;');
 FrenzyClickstyle.addRule('#MenuButton','padding:14px 16px 10px 0px;top:0px;right:-16px;z-index:3000;');
-FrenzyClickstyle.addRule('#Menu','height:96px;position:absolute;width:100%;top:0px;background-color:white;z-index:2000;box-shadow:inset 0 0 5px #000;overflow-x:hidden;');
-FrenzyClickstyle.addRule('#AutoClick','height:86px;width:30%;margin-left:1%;margin-top:5px;');
-FrenzyClickstyle.addRule('#AutoGolden','height:86px;width:30%;margin-left:1%;margin-top:5px;');
+FrenzyClickstyle.addRule('#Menu','color:#fff;background:#000 url(http://orteil.dashnet.org/cookieclicker/img/darkNoise.png);z-index:1000000;position:absolute;left:16px;right:0px;top:112px;bottom:0px;');
+FrenzyClickstyle.addRule('#SubSection','padding:8px 0px;font-size:14px;');
 FrenzyClickstyle.addRule('#Superfrenzy','z-index:100000000000000;position:absolute;left:0px;bottom:0px;width:74px;height:22px;margin:8px;');
 FrenzyClickstyle.addRule('#Superfrenzy:hover','cursor:text');
 FrenzyClickstyle.addRule('#Cookiemonster','z-index:200000000000000;position:absolute;overflow-x:hidden;overflow-y:hidden;width:100%;height:100%;display:none;');
+FrenzyClickstyle.addRule('.menus','background:#000 url(http://orteil.dashnet.org/cookieclicker/img/darkNoise.png)');
+FrenzyClickstyle.addRule('.rowhidden','visibility:hidden');
 }
 
 
