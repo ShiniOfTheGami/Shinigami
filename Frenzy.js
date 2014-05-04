@@ -83,6 +83,7 @@ function addCookieMonsterButton(){
 		console.log("made cookiemonster visible");
 		setTimeout("document.getElementById('Cookiemonster').style.display = 'none'",2000);
 		
+		
 	}
 	document.getElementById('products').appendChild(CookieMonsterButton);
 	document.getElementById('CM').className = "product unlocked enabled";
