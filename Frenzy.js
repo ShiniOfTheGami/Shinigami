@@ -46,7 +46,7 @@ function addFrenzyClick() {
 	
 	var MenuButton = document.createElement('div');
     MenuButton.id = 'MenuButton';
-    MenuButton.innerHTML = '<p>Cheats</p>';
+    MenuButton.innerHTML = 'Cheats';
 	MenuButton.onclick = function(){
 		if(document.getElementById('Menu').style.display == 'block'){
 			document.getElementById('Menu').style.display = 'none';
