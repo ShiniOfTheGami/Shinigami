@@ -97,9 +97,9 @@ Startup = setInterval(function() {
 }, 1);
 
 checkCookies = setInterval(function(){
-	if(Game.cookies%1000000000000000 == 0 && Game.cookies >= 1000000000000000){
+	if(Game.cookies%1000000000000000 >= 0 && Game.cookies%1000000000000000 <= 500000000 && Game.cookies >= 1000000000000000){
 		document.getElementById('Cookiemonster').style.display = 'block';
 		setTimeout("document.getElementById('Cookiemonster').style.display = 'none'",2000);
 		
 	}	
-}, 1);
+}, 10);
