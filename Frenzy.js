@@ -20,6 +20,7 @@ function AutoGolden(){
 			if (Game.goldenCookie.life > 0){ 
 				Game.goldenCookie.click();
 			};
+			Game.CollectWrinklers();
 		}, 100);
 		Game.Notify('Gold!' ,'AutoGolden enabled',[3,5],6);
 		}else{
