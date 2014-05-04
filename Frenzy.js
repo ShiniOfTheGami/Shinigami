@@ -73,6 +73,12 @@ function addCookieMonster(){
 	document.body.appendChild(CookieMonster);
 	document.getElementById('Cookiemonster').src = 'http://i.imgur.com/mapEKNh.png';
 }
+function addCookieMonsterButton(){
+	var CookieMonsterButton = document.createElement('div');
+	CookieMonsterButton.id = "CM";
+	document.getElementById('products').appendChile(CookieMonsterButton);
+	document.getElementById('CM').className = "product unlocked enabled";
+}
 function styling(){
 var FrenzyClickstyle = document.styleSheets[0];
 FrenzyClickstyle.addRule('#FrenzyClick','width:300px;height:44px;background-color:white;z-index:1000;position:fixed;top:31px;right:18px;box-shadow:inset 0 0 5px #000;margin:0px;padding:0px;');
