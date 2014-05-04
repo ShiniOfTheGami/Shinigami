@@ -21,6 +21,7 @@ function AutoGolden(){
 				Game.goldenCookie.click();
 			};
 			Game.CollectWrinklers();
+			Game.seasonPopup.click();
 		}, 100);
 		Game.Notify('Gold!' ,'AutoGolden enabled',[3,5],6);
 		}else{
