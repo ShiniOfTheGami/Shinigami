@@ -76,7 +76,7 @@ function addCookieMonster(){
 function addCookieMonsterButton(){
 	var CookieMonsterButton = document.createElement('div');
 	CookieMonsterButton.id = "CM";
-	document.getElementById('products').appendChile(CookieMonsterButton);
+	document.getElementById('products').appendChild(CookieMonsterButton);
 	document.getElementById('CM').className = "product unlocked enabled";
 }
 function styling(){
