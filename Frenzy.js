@@ -86,8 +86,6 @@ function addCookieMonsterButton(){
 	}
 	document.getElementById('products').appendChild(CookieMonsterButton);
 	document.getElementById('CM').className = "product unlocked enabled";
-	//new Game.Object('CookieMonster','CM','Toggle CookieMonster','http://i.imgur.com/mapEKNh.png',{},0,function(){},addCookieMonster());
-	//Game.RefreshStore();
 }
 function styling(){
 var FrenzyClickstyle = document.styleSheets[0];
