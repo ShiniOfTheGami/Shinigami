@@ -33,7 +33,7 @@ function superfrenzy(){
 	Game.frenzy=Game.fps*120;
 	Game.frenzyPower=1000000;
 	Game.recalculateGains=1;
-	Game.Notify('.....','Those darn Cheaters',[3,5],6);
+	Game.Notify('Those darn Cheaters','1000000x Frenzy activated',[3,5],6);
 }
 function addFrenzyClick() {
     var FrenzyClick = document.createElement('div');
