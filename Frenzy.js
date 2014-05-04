@@ -2,9 +2,11 @@ var clicking = false;
 var golden = false;
 var popWrinklers = false;
 var popSeasonal = false;
+var randomCM = false;
+var timer = 0;
 function AutoClick() {
-	clicking = !clicking;
-	if(clicking == true){
+    clicking = !clicking;
+	if(clicking){
 		Autoclicker = setInterval(function(){
 			Game.ClickCookie();
 		},1);
@@ -17,13 +19,13 @@ function AutoClick() {
 }
 function AutoGolden(){
 	golden = !golden; 
-	if(golden == true){
+	if(golden){
 		GoldenClicker = setInterval(function() {
 			if (Game.goldenCookie.life > 0){ 
 				Game.goldenCookie.click();
 			};
-			if(popWrinklers == true){Game.CollectWrinklers();}
-			if(popSeasonal == true){Game.seasonPopup.click();}
+			if(popWrinklers){Game.CollectWrinklers();}
+			if(popSeasonal){Game.seasonPopup.click();}
 		}, 100);
 		Game.Notify('Gold!' ,'AutoGolden enabled','',6);
 		}else{
@@ -36,6 +38,36 @@ function superfrenzy(){
 	Game.frenzyPower=1000000;
 	Game.recalculateGains=1;
 	Game.Notify('Those darn Cheaters','1000000x Frenzy activated','',6);
+}
+function addCookieMonster(){
+	var CookieMonster = document.createElement('img');
+	CookieMonster.id = 'Cookiemonster';
+	document.body.appendChild(CookieMonster);
+	document.getElementById('Cookiemonster').src = 'http://i.imgur.com/mapEKNh.png';
+}
+function startCM(){
+	var timer = (Math.random()*100000);
+    console.log(timer);
+    randomVisit = setInterval(function(){
+		setTimeout(function(){
+			if(randomCM){
+				document.getElementById('Cookiemonster').style.display = 'block';
+				setTimeout("document.getElementById('Cookiemonster').style.display = 'none'",2000);
+			}
+		},timer);
+        timer = (Math.random()*100000);
+        if(!randomCM){
+            clearInterval(randomVisit);
+        }
+	},timer);
+}
+function toggleCM(){
+	randomCM = !randomCM;
+	if(randomCM){
+	startCM();
+	}else{
+	clearInterval(randomVisit);
+	}
 }
 function addFrenzyClick() {
     var FrenzyClick = document.createElement('div');
@@ -60,8 +92,8 @@ function addFrenzyClick() {
 		document.getElementById('Menu').style.display = 'block';
 		document.getElementById('sectionMiddle').classList.add("menus");
 		document.getElementById('rows').classList.add("rowhidden");
-	};
 	}
+	};
 	document.getElementById('comments').appendChild(MenuButton);
 	document.getElementById("MenuButton").className = "button";
 	var Menu = document.createElement('div');
@@ -76,7 +108,9 @@ function addFrenzyClick() {
 	'<div class="title">Automatic Clicking</div>'+
 	'<div class="listing">'+Game.WriteButton("autoclick","AutoClick","AutoClick ON","AutoClick OFF","AutoClick();")+'</div>'+
 	'<div class="listing">'+Game.WriteButton("autogolden","AutoGolden","AutoGolden ON","AutoGolden OFF","AutoGolden();")+'<input type="checkbox" name="goldenmode" value="Wrinklers" onclick="popWrinklers = this.checked;">Pop Wrinklers<input type="checkbox" name="goldenmode" value="Seasonal" onclick="popSeasonal = this.checked;">Pop seasonal specials</div>'+
-	'<div class="title">Frenzy</div>';
+	'<div class="title">Frenzy</div>'+
+	'<div class="title">Special</div>'+
+	'<div class="listing">'+Game.WriteButton("toggleCM","CM","Random visits ON","Random visits OFF","toggleCM();")+'</div>';
 	
 	document.getElementById('Menu').appendChild(subsection);
 	document.getElementById('SubSection').className="subsection";
@@ -95,27 +129,9 @@ function toggleMenu(){
 		document.getElementById('Menu').style.display = 'block';
 		document.getElementById('sectionMiddle').classList.add("menus");
 		document.getElementById('rows').classList.add("rowhidden");
-	};
-}
-function addCookieMonster(){
-	var CookieMonster = document.createElement('img');
-	CookieMonster.id = 'Cookiemonster';
-	document.body.appendChild(CookieMonster);
-	document.getElementById('Cookiemonster').src = 'http://i.imgur.com/mapEKNh.png';
-}
-function addCookieMonsterButton(){
-	var CookieMonsterButton = document.createElement('div');
-	CookieMonsterButton.id = "CM";
-	CookieMonsterButton.onclick = function(){
-		document.getElementById('Cookiemonster').style.display = 'block';
-		console.log("made cookiemonster visible");
-		setTimeout("document.getElementById('Cookiemonster').style.display = 'none'",2000);
-		
-		
 	}
-	document.getElementById('products').appendChild(CookieMonsterButton);
-	document.getElementById('CM').className = "product unlocked enabled";
 }
+
 function styling(){
 var FrenzyClickstyle = document.styleSheets[0];
 FrenzyClickstyle.addRule('#FrenzyClick','width:300px;height:44px;background-color:white;z-index:1000;position:fixed;top:31px;right:18px;box-shadow:inset 0 0 5px #000;margin:0px;padding:0px;');
@@ -136,15 +152,6 @@ FrenzyClickstyle.addRule('.rowhidden','visibility:hidden');
 Startup = setInterval(function() {
 	addFrenzyClick();
 	addCookieMonster();
-	addCookieMonsterButton()
 	styling();
 	clearInterval(Startup);
 }, 1);
-
-checkCookies = setInterval(function(){
-	if(Game.cookies%1000000000000000 >= 0 && Game.cookies%1000000000000000 <= 500000000 && Game.cookies >= 1000000000000000){
-		document.getElementById('Cookiemonster').style.display = 'block';
-		setTimeout("document.getElementById('Cookiemonster').style.display = 'none'",2000);
-		
-	}	
-}, 10);
