@@ -78,6 +78,7 @@ function addCookieMonsterButton(){
 	CookieMonsterButton.id = "CM";
 	CookieMonsterButton.onclick = function(){
 		document.getElementById('Cookiemonster').style.display = 'block';
+		console.log("made cookiemonster visible");
 		setTimeout("document.getElementById('Cookiemonster').style.display = 'none'",2000);
 		
 	}
