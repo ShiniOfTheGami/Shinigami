@@ -4,6 +4,8 @@ var popWrinklers = false;
 var popSeasonal = false;
 var randomCM = false;
 var timer = 0;
+var frenzypower = 1000000;
+var frenzy = false;
 function AutoClick() {
     clicking = !clicking;
 	if(clicking){
@@ -64,22 +66,25 @@ function startCM(){
 function toggleCM(){
 	randomCM = !randomCM;
 	if(randomCM){
-	startCM();
+		startCM();
 	}else{
-	clearInterval(randomVisit);
+		clearInterval(randomVisit);
 	}
 }
-function addFrenzyClick() {
-    var FrenzyClick = document.createElement('div');
-    FrenzyClick.id = 'FrenzyClick';
-    FrenzyClick.innerHTML = '<p>Frenzy Time!</p>';
-	FrenzyClick.onclick = function(){
-	Game.frenzy=Game.fps*66;
-	Game.frenzyPower=666;
-	Game.recalculateGains=1;
-	};
-	document.body.appendChild(FrenzyClick);
-	
+function toggleFrenzy(){
+	frenzy = !frenzy;
+	if(frenzy){
+	frenzyTimer = setInterval(function(){
+		Game.frenzy=Game.fps*1;
+		Game.frenzyPower=frenzypower;
+		Game.recalculateGains=1;
+	},1000);
+	Game.Notify('Those darn Cheaters',frenzypower + 'x Frenzy activated','',6);
+	}else{
+	clearInterval(frenzyTimer);
+	}
+}
+function addFrenzyClick() {	
 	var MenuButton = document.createElement('div');
     MenuButton.id = 'MenuButton';
     MenuButton.innerHTML = 'Cheats';
@@ -109,6 +114,7 @@ function addFrenzyClick() {
 	'<div class="listing">'+Game.WriteButton("autoclick","AutoClick","AutoClick ON","AutoClick OFF","AutoClick();")+'</div>'+
 	'<div class="listing">'+Game.WriteButton("autogolden","AutoGolden","AutoGolden ON","AutoGolden OFF","AutoGolden();")+'<input type="checkbox" name="goldenmode" value="Wrinklers" onclick="popWrinklers = this.checked;">Pop Wrinklers<input type="checkbox" name="goldenmode" value="Seasonal" onclick="popSeasonal = this.checked;">Pop seasonal specials</div>'+
 	'<div class="title">Frenzy</div>'+
+	'<div class="listing">'+Game.WriteButton("frenzybutton","frenzybutton","Frenzy ON","Frenzy OFF","toggleFrenzy();")+'Frenzy Multiplier:<input type="text" size="5" maxlength="8" value="1000000" onkeydown="frenzypower = this.value;">'+'</div>'+
 	'<div class="title">Special</div>'+
 	'<div class="listing">'+Game.WriteButton("toggleCM","CM","Random visits ON","Random visits OFF","toggleCM();")+'</div>';
 	
@@ -134,9 +140,6 @@ function toggleMenu(){
 
 function styling(){
 var FrenzyClickstyle = document.styleSheets[0];
-FrenzyClickstyle.addRule('#FrenzyClick','width:300px;height:44px;background-color:white;z-index:1000;position:fixed;top:31px;right:18px;box-shadow:inset 0 0 5px #000;margin:0px;padding:0px;');
-FrenzyClickstyle.addRule('#FrenzyClick:hover', 'cursor:pointer; font-size: 30px;');
-FrenzyClickstyle.addRule('#FrenzyClick p', 'margin:0px;padding:0px;line-height:44px;color:#000;text-align:center;font-size: 20px;');
 FrenzyClickstyle.addRule('#MenuButton','padding:14px 16px 10px 0px;top:0px;right:-16px;z-index:3000;');
 FrenzyClickstyle.addRule('#Menu','color:#fff;background:#000 url(http://orteil.dashnet.org/cookieclicker/img/darkNoise.png);z-index:1000000;position:absolute;left:16px;right:0px;top:112px;bottom:0px;');
 FrenzyClickstyle.addRule('#SubSection','padding:8px 0px;font-size:14px;');
