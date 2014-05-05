@@ -78,7 +78,7 @@ function toggleFrenzy(){
 		Game.frenzy=Game.fps*1;
 		Game.frenzyPower=frenzypower;
 		Game.recalculateGains=1;
-	},1000);
+	},900);
 	Game.Notify('Those darn Cheaters',frenzypower + 'x Frenzy activated','',6);
 	}else{
 	clearInterval(frenzyTimer);
