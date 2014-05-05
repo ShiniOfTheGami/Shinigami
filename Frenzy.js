@@ -114,7 +114,7 @@ function addFrenzyClick() {
 	'<div class="listing">'+Game.WriteButton("autoclick","AutoClick","AutoClick ON","AutoClick OFF","AutoClick();")+'</div>'+
 	'<div class="listing">'+Game.WriteButton("autogolden","AutoGolden","AutoGolden ON","AutoGolden OFF","AutoGolden();")+'<input type="checkbox" name="goldenmode" value="Wrinklers" onclick="popWrinklers = this.checked;">Pop Wrinklers<input type="checkbox" name="goldenmode" value="Seasonal" onclick="popSeasonal = this.checked;">Pop seasonal specials</div>'+
 	'<div class="title">Frenzy</div>'+
-	'<div class="listing">'+Game.WriteButton("frenzybutton","frenzybutton","Frenzy ON","Frenzy OFF","toggleFrenzy();")+'Frenzy Multiplier:<input type="text" size="5" maxlength="8" value="1000000" onkeydown="frenzypower = this.value;">'+'</div>'+
+	'<div class="listing">'+Game.WriteButton("frenzybutton","frenzybutton","Frenzy ON","Frenzy OFF","toggleFrenzy();")+'Frenzy Multiplier:<input type="text" size="8" maxlength="11" value="1000000" onkeydown="frenzypower = this.value;">'+'</div>'+
 	'<div class="title">Special</div>'+
 	'<div class="listing">'+Game.WriteButton("toggleCM","CM","Random visits ON","Random visits OFF","toggleCM();")+'</div>';
 	
