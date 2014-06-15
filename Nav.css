@@ -16,6 +16,7 @@ width:100%;
 .category-content li{
 position:static !important;
 float:none !important;
+padding:1px 1px 1px 1px;
 }
 .nav li {
 position: relative;
